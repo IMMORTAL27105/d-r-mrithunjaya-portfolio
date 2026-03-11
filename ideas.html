@@ -10,7 +10,7 @@
 
 <body>
 
-<canvas id="stars"></canvas>
+<canvas id="stars1"></canvas>
 
 <nav class="top-nav">
 <a href="home.html" class="nav-btn">HOME</a>
@@ -25,39 +25,38 @@
 <div class="idea-list">
 
 <div class="idea">
-<h3>01 — Can Objects Express Their Internal State?</h3>
+<h3>01 — Educational Coordination Systems</h3>
 <p>
-Exploring whether everyday objects could communicate internal states
-through subtle signals and interactions.
+Exploring systems that could improve communication and coordination 
+between students, faculty, and academic infrastructure.
 </p>
 </div>
 
 <div class="idea">
-<h3>02 — Faculty Availability Detection System</h3>
+<h3>02 — Translating Hidden Object States</h3>
 <p>
-A system concept aimed at identifying faculty availability in
-academic environments through simple digital signals.
+Investigating whether physical objects can communicate their internal 
+states through subtle signals understandable to humans.
 </p>
 </div>
 
 <div class="idea">
-<h3>03 — Engineering as Narrative</h3>
+<h3>03 — Systems That Discourage War</h3>
 <p>
-Investigating the relationship between technical systems,
-storytelling, and how complex ideas are communicated.
+Thinking about whether technological and social systems could help 
+humans better understand the consequences of war and reduce conflict.
 </p>
 </div>
 
 <div class="idea">
-<h3>04 — Minimal Interfaces for Complex Systems</h3>
+<h3>More Ideas Coming Soon</h3>
 <p>
-Thinking about how deeply complex systems can present themselves
-through extremely minimal user interfaces.
+This section will continue to grow as new concepts, research directions, 
+and experiments are developed.
 </p>
 </div>
 
 </div>
-
 
 <div class="external-links">
 
@@ -65,12 +64,75 @@ through extremely minimal user interfaces.
 Interested in the technical side of my work?
 </p>
 
+<div class="link-buttons">
 <a href="https://github.com/IMMORTAL27105" target="_blank">GitHub</a>
 <a href="https://www.linkedin.com/in/d-r-mrithunjaya" target="_blank">LinkedIn</a>
+</div>
 
 </div>
 
 </section>
+<script>
+const canvas = document.getElementById("stars1");
+const ctx = canvas.getContext("2d");
 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+const STAR_COUNT = 6;
+
+for(let i=0;i<STAR_COUNT;i++){
+    stars.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*(canvas.height*1.2),
+        size: Math.random()*1.5 + 0.5,
+        speed: Math.random()*0.08 + 0.02,   // very slow
+        opacity: Math.random(),
+        twinkle: Math.random()*0.01
+    });
+}
+
+function animateStars(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    stars.forEach(star=>{
+
+        /* slow downward drift */
+
+        star.y += star.speed;
+
+        if(star.y > canvas.height){
+            star.y = 0;
+            star.x = Math.random()*canvas.width;
+        }
+
+        /* gentle twinkle */
+
+        star.opacity += star.twinkle;
+
+        if(star.opacity > 1 || star.opacity < 0.3){
+            star.twinkle *= -1;
+        }
+
+        ctx.beginPath();
+        ctx.arc(star.x,star.y,star.size,0,Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animateStars);
+}
+
+animateStars();
+
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+</script>
 </body>
 </html>

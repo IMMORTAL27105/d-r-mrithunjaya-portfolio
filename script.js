@@ -37,9 +37,11 @@ let stars = [];
 for(let i=0;i<65;i++){
   stars.push({
     x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    size:Math.random()*1.5,
-    speed:Math.random()*0.15
+    y: Math.random()*(canvas.height*1.2),
+    size:Math.random()*2,
+    speed:Math.random()*0.15,
+    opacity:Math.random(),
+    twinkle:Math.random()*0.02
   });
 }
 
@@ -58,7 +60,11 @@ function animateStars(){
 
     ctx.beginPath();
     ctx.arc(star.x, star.y, star.size, 0, Math.PI*2);
-    ctx.fillStyle = "rgba(255,255,255,0.4)";
+    star.opacity += star.twinkle;
+    if(star.opacity > 1 || star.opacity < 0.2){
+      star.twinkle *= -1;
+    }
+    ctx.fillStyle="rgba(255,255,255,"+star.opacity+")";
     ctx.fill();
 
   });
@@ -67,3 +73,4 @@ function animateStars(){
 }
 
 animateStars();
+
