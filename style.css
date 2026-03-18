@@ -322,3 +322,108 @@ font-size:12px;
 letter-spacing:2px;
 color:rgba(255,255,255,0.45);
 }
+
+/* MOBILE DESIGN */
+
+@media (max-width: 768px){
+
+.name{
+font-size:42px;
+letter-spacing:4px;
+text-align:center;
+}
+
+.subtitle{
+font-size:14px;
+letter-spacing:1px;
+text-align:center;
+padding:0 20px;
+}
+
+.owl{
+width:90px;
+margin-bottom:-10px;
+}
+
+/* NAV */
+
+.top-nav{
+top:25px;
+right:20px;
+gap:12px;
+}
+
+.nav-btn{
+font-size:11px;
+padding:6px 12px;
+}
+
+/* ABOUT */
+
+.about{
+padding:0 10%;
+}
+
+.about h2{
+font-size:28px;
+}
+
+.about p{
+font-size:15px;
+line-height:1.8;
+}
+
+/* CONTACT */
+
+.contact{
+padding:0 10%;
+}
+
+.contact h2{
+font-size:28px;
+}
+
+.contact-text{
+font-size:15px;
+}
+
+/* IDEAS PAGE */
+
+.ideas{
+padding:120px 10%;
+}
+
+.ideas-title{
+font-size:34px;
+margin-bottom:70px;
+}
+
+.idea-list{
+gap:60px;
+max-width:100%;
+}
+
+.idea h3{
+font-size:20px;
+}
+
+.idea p{
+font-size:15px;
+}
+
+.links-text{
+font-size:14px;
+text-align:center;
+}
+
+.link-buttons{
+flex-direction:column;
+gap:15px;
+}
+
+.external-links a{
+padding:10px 22px;
+font-size:12px;
+}
+
+}
