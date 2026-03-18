@@ -323,34 +323,48 @@ letter-spacing:2px;
 color:rgba(255,255,255,0.45);
 }
 
-/* MOBILE DESIGN */
+/* ================= MOBILE VERSION ================= */
 
-@media (max-width: 768px){
+@media (max-width:768px){
+
+body{
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+padding:0 20px;
+background-position:center center;
+}
 
 .name{
-font-size:42px;
-letter-spacing:4px;
+font-size:40px;
+letter-spacing:3px;
 text-align:center;
+line-height:1.2;
 }
 
 .subtitle{
 font-size:14px;
 letter-spacing:1px;
 text-align:center;
-padding:0 20px;
+padding:0 10px;
 }
 
+/* OWL */
+
 .owl{
-width:90px;
+width:85px;
 margin-bottom:-10px;
 }
 
-/* NAV */
+/* NAVIGATION */
 
 .top-nav{
-top:25px;
+top:20px;
 right:20px;
-gap:12px;
+gap:10px;
 }
 
 .nav-btn{
@@ -361,7 +375,7 @@ padding:6px 12px;
 /* ABOUT */
 
 .about{
-padding:0 10%;
+padding:0 12%;
 }
 
 .about h2{
@@ -376,7 +390,7 @@ line-height:1.8;
 /* CONTACT */
 
 .contact{
-padding:0 10%;
+padding:0 12%;
 }
 
 .contact h2{
@@ -394,8 +408,7 @@ padding:120px 10%;
 }
 
 .ideas-title{
-font-size:34px;
-margin-bottom:70px;
+font-size:32px;
 }
 
 .idea-list{
@@ -411,10 +424,7 @@ font-size:20px;
 font-size:15px;
 }
 
-.links-text{
-font-size:14px;
-text-align:center;
-}
+/* LINKS */
 
 .link-buttons{
 flex-direction:column;
@@ -422,8 +432,8 @@ gap:15px;
 }
 
 .external-links a{
-padding:10px 22px;
 font-size:12px;
+padding:10px 20px;
 }
 
 }
