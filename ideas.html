@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -17,53 +16,32 @@
 <a href="index.html#contact" class="nav-btn">CONTACT</a>
 </nav>
 
-
 <section class="ideas">
 
-<h1 class="ideas-title">Ideas</h1>
+<h1 class="ideas-title">THOUGHTS</h1>
 
-<div class="idea-list">
+<!-- Thoughts Section -->
+<div class="essay-list">
 
-<div class="idea">
-<h3>01 — Educational Coordination Systems</h3>
-<p>
-Exploring systems that could improve communication and coordination 
-between students, faculty, and academic infrastructure.
-</p>
-</div>
-
-<div class="idea">
-<h3>02 — Translating Hidden Object States</h3>
-<p>
-Investigating whether physical objects can communicate their internal 
-states through subtle signals understandable to humans.
-</p>
-</div>
-
-<div class="idea">
-<h3>More Ideas Coming Soon</h3>
-<p>
-This section will continue to grow as new concepts, research directions, 
-and experiments are developed.
-</p>
-</div>
+<a href="essay.html" class="essay-card">
+<div class="essay-meta">Essay · April 2026 · Education</div>
+<h3 class="essay-card-title">You Were Built to Work. Nobody Asked If That's What You Wanted.</h3>
+<p class="essay-card-desc">How the Indian education system was designed to produce workers — and why most of us never noticed.</p>
+<span class="essay-read">Read →</span>
+</a>
 
 </div>
 
 <div class="external-links">
-
-<p class="links-text">
-Interested in the technical side of my work?
-</p>
-
+<p class="links-text">Interested in the technical side of my work?</p>
 <div class="link-buttons">
 <a href="https://github.com/IMMORTAL27105" target="_blank">GitHub</a>
 <a href="https://www.linkedin.com/in/d-r-mrithunjaya" target="_blank">LinkedIn</a>
 </div>
-
 </div>
 
 </section>
+
 <footer class="site-footer">
 © 2026 Mrithunjaya D R. All rights reserved.
 </footer>
@@ -76,59 +54,40 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars = [];
-const STAR_COUNT = 6;
+const STAR_COUNT = 60;
 
 for(let i=0;i<STAR_COUNT;i++){
-    stars.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*(canvas.height*1.2),
-        size: Math.random()*1.5 + 0.5,
-        speed: Math.random()*0.08 + 0.02,   // very slow
-        opacity: Math.random(),
-        twinkle: Math.random()*0.01
-    });
+  stars.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*(canvas.height*1.2),
+    size: Math.random()*1.5 + 0.5,
+    speed: Math.random()*0.08 + 0.02,
+    opacity: Math.random(),
+    twinkle: Math.random()*0.01
+  });
 }
 
 function animateStars(){
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    stars.forEach(star=>{
-
-        /* slow downward drift */
-
-        star.y += star.speed;
-
-        if(star.y > canvas.height){
-            star.y = 0;
-            star.x = Math.random()*canvas.width;
-        }
-
-        /* gentle twinkle */
-
-        star.opacity += star.twinkle;
-
-        if(star.opacity > 1 || star.opacity < 0.3){
-            star.twinkle *= -1;
-        }
-
-        ctx.beginPath();
-        ctx.arc(star.x,star.y,star.size,0,Math.PI*2);
-        ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
-        ctx.fill();
-
-    });
-
-    requestAnimationFrame(animateStars);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(star=>{
+    star.y += star.speed;
+    if(star.y > canvas.height){ star.y = 0; star.x = Math.random()*canvas.width; }
+    star.opacity += star.twinkle;
+    if(star.opacity > 1 || star.opacity < 0.3){ star.twinkle *= -1; }
+    ctx.beginPath();
+    ctx.arc(star.x,star.y,star.size,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,255,255,${star.opacity})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animateStars);
 }
 
 animateStars();
 
 window.addEventListener("resize", ()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
-
 </script>
 </body>
 </html>

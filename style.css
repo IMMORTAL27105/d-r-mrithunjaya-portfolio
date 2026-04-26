@@ -11,7 +11,6 @@ body{
 margin:0;
 font-family:'Cinzel',serif;
 color:white;
-
 background:
 radial-gradient(circle at 50% 30%, #0b1a3a 0%, #020817 40%, #000000 100%);
 }
@@ -23,11 +22,9 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-
 background:
 radial-gradient(circle at 70% 40%, rgba(120,120,255,0.08), transparent 60%),
 radial-gradient(circle at 30% 70%, rgba(255,120,120,0.05), transparent 60%);
-
 pointer-events:none;
 z-index:0;
 }
@@ -65,12 +62,7 @@ bottom:0;
 left:0;
 width:100%;
 height:200px;
-
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0),
-rgba(2,8,23,1)
-);
+background:linear-gradient(to bottom, rgba(0,0,0,0), rgba(2,8,23,1));
 }
 
 .subtitle{
@@ -128,7 +120,7 @@ max-width:620px;
 /* TOP RIGHT NAV */
 
 .top-nav{
-position:absolute;
+position:fixed;
 top:40px;
 right:70px;
 display:flex;
@@ -224,7 +216,7 @@ z-index: 2;
 pointer-events:none;
 }
 
-/* IDEAS PAGE */
+/* ── IDEAS PAGE ─────────────────────────────── */
 
 .ideas{
 min-height:100vh;
@@ -233,6 +225,8 @@ flex-direction:column;
 align-items:center;
 padding:140px 20%;
 text-align:center;
+position:relative;
+z-index:1;
 }
 
 .ideas-title{
@@ -262,31 +256,80 @@ line-height:1.9;
 opacity:0.8;
 }
 
-.idea:last-child h3{
-opacity:0.8;
+.idea:last-child h3{ opacity:0.8; }
+.idea:last-child p{ opacity:0.6; }
+
+/* ── ESSAYS SECTION on ideas page ───────────── */
+
+.essays-section{
+margin-top:120px;
+width:100%;
+max-width:720px;
+text-align:center;
 }
 
-.idea:last-child p{
-opacity:0.6;
+.essays-title{
+font-size:32px;
+letter-spacing:5px;
+margin-bottom:60px;
+opacity:0.9;
 }
 
-.external-links{
-margin-top:100px;
+.essay-list{
 display:flex;
 flex-direction:column;
-align-items:center;
 gap:30px;
 }
 
-.links-text{
-opacity:0.7;
+.essay-card{
+display:block;
+text-decoration:none;
+color:white;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:12px;
+padding:30px 36px;
+text-align:left;
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(6px);
+transition:border-color 0.3s ease, background 0.3s ease;
 }
 
-.link-buttons{
-display:flex;
-gap:25px;
-justify-content:center;
+.essay-card:hover{
+border-color:rgba(255,255,255,0.25);
+background:rgba(255,255,255,0.06);
 }
+
+.essay-meta{
+font-size:11px;
+letter-spacing:0.16em;
+text-transform:uppercase;
+color:rgba(201,168,76,0.8);
+margin-bottom:14px;
+}
+
+.essay-card-title{
+font-size:20px;
+letter-spacing:1.5px;
+line-height:1.4;
+margin-bottom:12px;
+}
+
+.essay-card-desc{
+font-size:15px;
+line-height:1.8;
+opacity:0.65;
+margin-bottom:16px;
+font-family:'Cinzel',serif;
+letter-spacing:0.5px;
+}
+
+.essay-read{
+font-size:12px;
+letter-spacing:2px;
+color:rgba(201,168,76,0.85);
+}
+
+/* ── EXTERNAL LINKS ──────────────────────────── */
 
 .external-links{
 margin-top:160px;
@@ -294,6 +337,14 @@ display:flex;
 flex-direction:column;
 align-items:center;
 gap:30px;
+}
+
+.links-text{ opacity:0.7; }
+
+.link-buttons{
+display:flex;
+gap:25px;
+justify-content:center;
 }
 
 .external-links a{
@@ -306,9 +357,7 @@ letter-spacing:2px;
 transition:0.3s;
 }
 
-.external-links a:hover{
-border-color:white;
-}
+.external-links a:hover{ border-color:white; }
 
 #stars1{
 position:fixed;
@@ -316,7 +365,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-z-index: 0;
+z-index:0;
 pointer-events:none;
 }
 
@@ -326,18 +375,151 @@ padding:40px 0 30px 0;
 font-size:12px;
 letter-spacing:2px;
 color:rgba(255,255,255,0.45);
+position:relative;
+z-index:1;
 }
 
-/* ================= MOBILE VERSION ================= */
+/* ── ESSAY PAGE ─────────────────────────────── */
+
+.essay-container{
+max-width:680px;
+margin:0 auto;
+padding:120px 1.5rem 6rem;
+position:relative;
+z-index:1;
+}
+
+.essay-meta-top{
+font-family:'Cinzel',serif;
+font-size:11px;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:rgba(201,168,76,0.85);
+margin-bottom:2rem;
+}
+
+.essay-headline{
+font-family:'Cormorant Garamond', Georgia, serif;
+font-size:clamp(2rem, 5vw, 3rem);
+font-weight:300;
+line-height:1.2;
+color:rgba(255,255,255,0.95);
+margin-bottom:1.5rem;
+letter-spacing:-0.3px;
+}
+
+.essay-subtitle{
+font-family:'Cormorant Garamond', Georgia, serif;
+font-size:1.1rem;
+font-style:italic;
+color:rgba(255,255,255,0.5);
+margin-bottom:3rem;
+padding-bottom:3rem;
+line-height:1.7;
+}
+
+.essay-divider{
+width:100%;
+height:0.5px;
+background:rgba(255,255,255,0.1);
+margin-bottom:3rem;
+}
+
+.essay-body p{
+font-family:'Jost', sans-serif;
+font-size:1rem;
+font-weight:300;
+color:rgba(255,255,255,0.78);
+margin-bottom:1.5rem;
+line-height:1.9;
+letter-spacing:0.01em;
+}
+
+.essay-h2{
+font-family:'Cormorant Garamond', Georgia, serif;
+font-size:1.5rem;
+font-weight:400;
+color:rgba(255,255,255,0.9);
+margin:3rem 0 1rem;
+letter-spacing:-0.2px;
+}
+
+.essay-pullquote{
+font-family:'Cormorant Garamond', Georgia, serif;
+font-size:1.4rem;
+font-style:italic;
+font-weight:300;
+color:rgba(255,255,255,0.9);
+line-height:1.6;
+margin:3rem 0;
+padding-left:1.5rem;
+border-left:2px solid rgba(201,168,76,0.7);
+}
+
+.essay-databox{
+background:rgba(255,255,255,0.04);
+border:0.5px solid rgba(255,255,255,0.1);
+border-radius:8px;
+padding:1.25rem 1.5rem;
+margin:2rem 0;
+font-family:'Jost', sans-serif;
+font-size:0.9rem;
+color:rgba(255,255,255,0.55);
+line-height:1.7;
+}
+
+.essay-databox-label{
+font-family:'Cinzel',serif;
+font-size:10px;
+letter-spacing:0.14em;
+text-transform:uppercase;
+color:rgba(201,168,76,0.8);
+display:block;
+margin-bottom:8px;
+}
+
+.essay-datastat{
+font-family:'Cormorant Garamond', Georgia, serif;
+font-size:2rem;
+font-weight:300;
+color:rgba(255,255,255,0.9);
+display:block;
+margin-bottom:6px;
+}
+
+.essay-ending{
+margin-top:4rem;
+padding-top:2rem;
+border-top:0.5px solid rgba(255,255,255,0.1);
+font-family:'Cormorant Garamond', Georgia, serif;
+font-size:1.1rem;
+font-style:italic;
+color:rgba(255,255,255,0.5);
+line-height:1.8;
+}
+
+.essay-also-building{
+margin-top:2rem;
+font-family:'Cinzel',serif;
+font-size:11px;
+letter-spacing:0.1em;
+text-transform:uppercase;
+color:rgba(255,255,255,0.4);
+}
+
+.essay-also-building a{
+color:rgba(201,168,76,0.8);
+text-decoration:none;
+transition:color 0.2s;
+}
+
+.essay-also-building a:hover{ color:rgba(201,168,76,1); }
+
+/* ── MOBILE ──────────────────────────────────── */
 
 @media (max-width:768px){
 
-body{
-overflow-x:hidden;
-}
-
-
-/* HERO */
+body{ overflow-x:hidden; }
 
 .hero{
 padding:0 20px;
@@ -360,90 +542,37 @@ text-align:center;
 padding:0 10px;
 }
 
-/* OWL */
+.owl{ width:85px; margin-bottom:-10px; }
 
-.owl{
-width:85px;
-margin-bottom:-10px;
-}
+.top-nav{ top:20px; right:20px; gap:10px; }
+.nav-btn{ font-size:11px; padding:6px 12px; }
 
-/* NAVIGATION */
+.about{ min-height:auto; padding:80px 10%; }
+.about h2{ font-size:28px; }
+.about p{ font-size:15px; line-height:1.8; }
 
-.top-nav{
-top:20px;
-right:20px;
-gap:10px;
-}
+.contact{ min-height:auto; padding:80px 10%; }
+.contact h2{ font-size:28px; }
+.contact-text{ font-size:15px; }
 
-.nav-btn{
-font-size:11px;
-padding:6px 12px;
-}
+.ideas{ padding:120px 8%; }
+.ideas-title{ font-size:32px; }
+.idea-list{ gap:60px; max-width:100%; }
+.idea h3{ font-size:20px; }
+.idea p{ font-size:15px; }
 
-/* ABOUT */
+.essays-section{ margin-top:80px; }
+.essays-title{ font-size:24px; }
+.essay-card{ padding:20px 22px; }
+.essay-card-title{ font-size:17px; }
+.essay-card-desc{ font-size:14px; }
 
-.about{
-min-height:auto;
-padding:80px 10%;
-}
+.link-buttons{ flex-direction:column; gap:15px; }
+.external-links a{ font-size:12px; padding:10px 20px; }
 
-.about h2{
-font-size:28px;
-}
-
-.about p{
-font-size:15px;
-line-height:1.8;
-}
-
-/* CONTACT */
-
-.contact{
-min-height:auto;
-padding:80px 10%;
-}
-
-.contact h2{
-font-size:28px;
-}
-
-.contact-text{
-font-size:15px;
-}
-
-/* IDEAS PAGE */
-
-.ideas{
-padding:120px 10%;
-}
-
-.ideas-title{
-font-size:32px;
-}
-
-.idea-list{
-gap:60px;
-max-width:100%;
-}
-
-.idea h3{
-font-size:20px;
-}
-
-.idea p{
-font-size:15px;
-}
-
-/* LINKS */
-
-.link-buttons{
-flex-direction:column;
-gap:15px;
-}
-
-.external-links a{
-font-size:12px;
-padding:10px 20px;
-}
+.essay-container{ padding:100px 1.25rem 4rem; }
+.essay-headline{ font-size:1.75rem; }
+.essay-pullquote{ font-size:1.2rem; }
+.essay-datastat{ font-size:1.6rem; }
 
 }
